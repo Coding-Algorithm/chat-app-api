@@ -9,7 +9,7 @@ const socket = require("socket.io");
 const app = express();
 
 app.use(cors({
-  origin: `${process.env.CLIENT}`
+  origin: [`${process.env.CLIENT}`, "*"]
 }));
 app.use(express.json());
 
