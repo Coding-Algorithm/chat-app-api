@@ -8,7 +8,9 @@ const socket = require("socket.io");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: `${process.env.CLIENT}`
+}));
 app.use(express.json());
 
 app.use("/api/auth", userRoute);
@@ -32,7 +34,7 @@ const server = app.listen(process.env.PORT, () => {
 
 const io = socket(server, {
   cors: {
-    origin: ["http://localhost:3000", "*"],
+    origin: [`${process.env.CLIENT}`, "*"],
     credentials: true,
   },
 });
